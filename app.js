@@ -24,9 +24,10 @@ db.mongoose
     })
 
 app.get(`/`, (req, res) => {
-    res.json({
-        message : "Application running"
-    })
+    res.send("Application running")
+    // res.json({
+    //     message : "Application running"
+    // })
 })
  
 require('./app/routes/post.routes')(app)
