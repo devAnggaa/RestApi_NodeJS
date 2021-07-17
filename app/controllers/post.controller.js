@@ -15,7 +15,7 @@ exports.findAll = async (req, res) =>{
     })
 }
 
-exports.create = (req, res) =>{
+exports.create = async (req, res) =>{
     const post = new Post({
         userName: req.body.userName, 
         accountNumber:req.body.accountNumber, 
@@ -23,7 +23,7 @@ exports.create = (req, res) =>{
         identifyNumber:req.body.identifyNumber
     })
 
-    post.save(post)
+    await post.save(post)
     .then((result) =>{
         res.send(result)
     })
@@ -34,10 +34,10 @@ exports.create = (req, res) =>{
     })
 }
 
-exports.findId = (req, res) =>{
+exports.findId = async (req, res) =>{
     const id = req.params.id
 
-    Post.findById(id)
+    await Post.findById(id)
     .then((result) =>{
         if(!result){
             res.status(404).send({
@@ -54,10 +54,10 @@ exports.findId = (req, res) =>{
     })
 }
 
-exports.findIdentifyNumber = (req, res) =>{
+exports.findIdentifyNumber = async (req, res) =>{
     const identifyNumber = req.params.identifyNumber
 
-    Post.find({
+    await Post.find({
         identifyNumber : identifyNumber
     })
     .then((result) =>{
@@ -77,10 +77,10 @@ exports.findIdentifyNumber = (req, res) =>{
     })
 }
 
-exports.findAccountNumber = (req, res) =>{
+exports.findAccountNumber = async (req, res) =>{
     const accountNumber  = req.params.accountNumber 
 
-    Post.find({
+    await Post.find({
         accountNumber  : accountNumber 
     })
     .then((result) =>{
@@ -100,10 +100,10 @@ exports.findAccountNumber = (req, res) =>{
     })
 }
 
-exports.update = (req, res) =>{
+exports.update = async (req, res) =>{
     const id = req.params.id
 
-    Post.findByIdAndUpdate(id, req.body)
+    await Post.findByIdAndUpdate(id, req.body)
     .then((result) =>{
         if(!result){
             res.status(404).send({
@@ -122,10 +122,10 @@ exports.update = (req, res) =>{
     })
 }
 
-exports.delete = (req, res) =>{
+exports.delete = async (req, res) =>{
     const id = req.params.id
 
-    Post.findByIdAndRemove(id)
+    await Post.findByIdAndRemove(id)
     .then((result) =>{
         if(!result){
             res.status(404).send({
