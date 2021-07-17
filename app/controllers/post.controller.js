@@ -1,8 +1,10 @@
 const db = require('../models')
 const Post = db.posts
+const Auth = db.auth
 
-exports.findAll = (req, res) =>{
-    Post.find()
+exports.findAll = async (req, res) =>{
+
+    await Post.find()
     .then((result) =>{
         res.send(result)
     })

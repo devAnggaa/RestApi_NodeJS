@@ -1,14 +1,16 @@
+const verifyToken = require('./verify.routes')
+
 module.exports = (app) =>{
     const posts = require('../controllers/post.controller')
     const router = require('express').Router()
 
-    router.get('/', posts.findAll)
-    router.post('/', posts.create)
-    router.get('/:id', posts.findId)
-    router.put('/:id', posts.update)
-    router.delete('/:id', posts.delete)
-    router.get('/id/:identifyNumber', posts.findIdentifyNumber)
-    router.get('/acc/:accountNumber', posts.findAccountNumber)
+    router.get('/', verifyToken, posts.findAll)
+    router.post('/', verifyToken, posts.create)
+    router.get('/:id', verifyToken, posts.findId)
+    router.put('/:id', verifyToken, posts.update)
+    router.delete('/:id', verifyToken, posts.delete)
+    router.get('/id/:identifyNumber', verifyToken, posts.findIdentifyNumber)
+    router.get('/acc/:accountNumber', verifyToken, posts.findAccountNumber)
 
     app.use('/api/posts', router)
 }

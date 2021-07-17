@@ -7,5 +7,6 @@ const db = {}
 db.mongoose = mongoose
 db.url = dbConfig.url
 db.posts = require('./post.model')(mongoose)
+db.auth = require('./auth.model')(mongoose)
 
 module.exports = db

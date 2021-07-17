@@ -25,12 +25,10 @@ db.mongoose
 
 app.get(`/`, (req, res) => {
     res.send("Application running")
-    // res.json({
-    //     message : "Application running"
-    // })
 })
  
 require('./app/routes/post.routes')(app)
+require('./app/routes/auth.routes')(app)
 
 const PORT = process.env.PORT || 8000
 app.listen(PORT, () => {
