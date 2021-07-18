@@ -22,16 +22,23 @@ const run = async () => {
 
                 var url = 'https://node-server-angga.herokuapp.com/api/posts/consumer';
 
-                axios
-                .post(url, {todo : jsonObj})
-                .then(res =>{
-                    console.log("Process! :"+res.statusCode)
+                axios({
+                    method: 'post',
+                    url: url,
+                    data: jsonObj
                 })
-                .catch(err =>{
-                    console.log(err)
+                .then(res => {
+                    if(res.status==200){
+                        console.log("Data Created!")
+                    }else{
+                        console.log(res)
+                    }
                 })
-            } catch (error) {
-                console.log('err=', error)
+                .catch(error => {
+                    console.error(error)
+                })
+            } catch (err) {
+                console.log(err)
             }
         }
     })
