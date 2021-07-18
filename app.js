@@ -29,8 +29,13 @@ app.get(`/`, (req, res) => {
  
 require('./app/routes/post.routes')(app)
 require('./app/routes/auth.routes')(app)
+// Kafka Consumer can be implemented successfully on local
+// But need the public access endpoint
+// So, for Heroku implementation i close the command and run it on different node :)
+// require('./kafka/consumer')
 
 const PORT = process.env.PORT || 8000
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`)
 })
+

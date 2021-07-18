@@ -10,12 +10,14 @@
   "author": "angga prahmana",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "joi": "^17.4.1",
     "jsonwebtoken": "^8.5.1",
+    "kafkajs": "^1.15.0",
     "mongoose": "^5.13.2",
     "nodemon": "^2.0.12"
   }

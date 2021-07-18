@@ -23,6 +23,12 @@ exports.create = async (req, res) =>{
         identifyNumber:req.body.identifyNumber
     })
 
+    const isExist = await Post.findOne({identifyNumber:req.body.identifyNumber})
+    if(isExist) return res.status(400).json({
+        status: res.statusCode,
+        message: `User already created with identify number ${req.body.identifyNumber}!`
+    })
+
     await post.save(post)
     .then((result) =>{
         res.send(result)

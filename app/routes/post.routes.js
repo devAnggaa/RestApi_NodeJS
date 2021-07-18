@@ -6,6 +6,7 @@ module.exports = (app) =>{
 
     router.get('/', verifyToken, posts.findAll)
     router.post('/', verifyToken, posts.create)
+    router.post('/consumer', post.create)
     router.get('/:id', verifyToken, posts.findId)
     router.put('/:id', verifyToken, posts.update)
     router.delete('/:id', verifyToken, posts.delete)
