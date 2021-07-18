@@ -29,14 +29,16 @@ const run = async () => {
                 })
                 .then(res => {
                     if(res.status==200){
-                        console.log("Data Created!")
-                    }else{
-                        console.log(res)
+                        console.log("Data created!")
+                        console.log(res.data)
                     }
                 })
-                .catch(error => {
-                    console.error(error)
-                })
+                .catch(function (error) {
+                    if (error.response) {
+                        console.log("Data failed to create")
+                        console.log(error.response.data);
+                    }
+                });
             } catch (err) {
                 console.log(err)
             }
